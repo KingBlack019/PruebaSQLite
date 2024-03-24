@@ -8,6 +8,10 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 class ViewModelUsuario : ViewModel() {
+    fun insertarDatos() {
+        TODO("Not yet implemented")
+    }
+
     private val _uiState = MutableStateFlow(uiStateUser())
     val uiState: StateFlow<uiStateUser> = _uiState.asStateFlow()
 

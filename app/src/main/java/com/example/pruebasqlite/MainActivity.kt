@@ -42,10 +42,10 @@ class MainActivity : ComponentActivity() {
 
         NavHost(navController = navController, startDestination = NavRoute.LOGIN.name){
             composable(NavRoute.LOGIN.name){
-                LoginScreen(viewModelUsuario, uiStateUsuario, clickRegister = {navController.navigate(NavRoute.REGISTER.name)}, clickContinue = {navController.navigate(NavRoute.MAIN.name)} )
+                LoginScreen(viewModelUsuario = viewModelUsuario, uiStateUsuario = uiStateUsuario, clickRegister = {navController.navigate(NavRoute.REGISTER.name)}, clickContinue = {navController.navigate(NavRoute.MAIN.name)} )
             }
             composable(NavRoute.REGISTER.name){
-                RegisterScreen(viewModelUsuario, uiStateUsuario, clickContinue = {navController.navigate(NavRoute.MAIN.name)})
+                RegisterScreen(viewModelUsuario = viewModelUsuario, uiStateUsuario = uiStateUsuario, clickContinue = {navController.navigate(NavRoute.MAIN.name)})
             }
             composable(NavRoute.MAIN.name){
                 MainScreen()

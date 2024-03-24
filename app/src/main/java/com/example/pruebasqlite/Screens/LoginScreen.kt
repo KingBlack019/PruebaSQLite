@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -13,8 +14,8 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import com.example.pruebasqlite.Data.uiStateUser
-import com.example.pruebasqlite.GeneralFunctions.VerticalMidSpacer
 import com.example.pruebasqlite.GeneralFunctions.VerticalBigSpacer
+import com.example.pruebasqlite.GeneralFunctions.VerticalMidSpacer
 import com.example.pruebasqlite.GeneralFunctions.ViewModelUsuario
 
 @Composable
@@ -31,24 +32,26 @@ fun LoginScreen(
     ){
         Text(text = "Nombre de usuario")
         VerticalMidSpacer()
-        //TextField(value = "", onValueChange = "") // todo variables que cambian 1
+        TextField(value = uiStateUsuario.username, onValueChange = { uiStateUsuario.username } )
         VerticalBigSpacer()
         Text(text = "Contraseña")
         VerticalMidSpacer()
-        //TextField(value = "", onValueChange = "") // todo variables que cambian 2
+        TextField(value = uiStateUsuario.username, onValueChange = { uiStateUsuario.password } )
         VerticalMidSpacer()
         Button(
-            onClick = { clickContinue.invoke() },
+            onClick = { clickContinue.invoke()
+                      viewModelUsuario.insertarDatos()
+                      },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(32.dp)) {
+                .padding(horizontal = 32.dp)
+        ) {
             Text(text = "Enviar")
         }
+        VerticalMidSpacer()
         Row {
-            Spacer(modifier = Modifier.width(50.dp))
+            Spacer(modifier = Modifier.width(60.dp))
             ClickableText(text = AnnotatedString("Registrarse", spanStyle = SpanStyle(textDecoration = TextDecoration.Underline, color = Color.Blue)), onClick = {clickRegister.invoke()})
         }
-
     }
-
 }
