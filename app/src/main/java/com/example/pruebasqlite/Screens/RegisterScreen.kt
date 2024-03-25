@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.example.pruebasqlite.Data.uiStateUser
-import com.example.pruebasqlite.GeneralFunctions.ViewModelUsuario
+import com.example.pruebasqlite.generalFunctions.ViewModelUsuario
 
 @Composable
 fun RegisterScreen(viewModelUsuario: ViewModelUsuario, uiStateUsuario: uiStateUser, clickContinue: () -> Unit) {

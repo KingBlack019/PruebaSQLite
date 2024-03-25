@@ -15,7 +15,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.pruebasqlite.GeneralFunctions.ViewModelUsuario
+import com.example.pruebasqlite.generalFunctions.ViewModelUsuario
 import com.example.pruebasqlite.Screens.LoginScreen
 import com.example.pruebasqlite.Screens.MainScreen
 import com.example.pruebasqlite.Screens.NavRoute
@@ -42,13 +42,13 @@ class MainActivity : ComponentActivity() {
 
         NavHost(navController = navController, startDestination = NavRoute.LOGIN.name){
             composable(NavRoute.LOGIN.name){
-                LoginScreen(viewModelUsuario = viewModelUsuario, uiStateUsuario = uiStateUsuario, clickRegister = {navController.navigate(NavRoute.REGISTER.name)}, clickContinue = {navController.navigate(NavRoute.MAIN.name)} )
+                LoginScreen(viewModelUsuario = viewModelUsuario, uiStateUsuario = uiStateUsuario, clickRegister = { navController.navigate(NavRoute.REGISTER.name) }, clickContinue = {navController.navigate(NavRoute.MAIN.name)} )
             }
             composable(NavRoute.REGISTER.name){
-                RegisterScreen(viewModelUsuario = viewModelUsuario, uiStateUsuario = uiStateUsuario, clickContinue = {navController.navigate(NavRoute.MAIN.name)})
+                RegisterScreen(viewModelUsuario = viewModelUsuario, uiStateUsuario = uiStateUsuario, clickContinue = { navController.navigate(NavRoute.MAIN.name) })
             }
             composable(NavRoute.MAIN.name){
-                MainScreen()
+                MainScreen(viewModelUsuario = viewModelUsuario, uiStateUsuario = uiStateUsuario)
             }
         }
     }

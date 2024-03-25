@@ -1,4 +1,4 @@
-package com.example.pruebasqlite.GeneralFunctions
+package com.example.pruebasqlite.generalFunctions
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height

@@ -1,5 +1,6 @@
 package com.example.pruebasqlite.Screens
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.Button
@@ -14,10 +15,11 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import com.example.pruebasqlite.Data.uiStateUser
-import com.example.pruebasqlite.GeneralFunctions.VerticalBigSpacer
-import com.example.pruebasqlite.GeneralFunctions.VerticalMidSpacer
-import com.example.pruebasqlite.GeneralFunctions.ViewModelUsuario
+import com.example.pruebasqlite.generalFunctions.VerticalBigSpacer
+import com.example.pruebasqlite.generalFunctions.VerticalMidSpacer
+import com.example.pruebasqlite.generalFunctions.ViewModelUsuario
 
+@SuppressLint("StateFlowValueCalledInComposition")
 @Composable
 fun LoginScreen(
     viewModelUsuario: ViewModelUsuario,
@@ -32,11 +34,11 @@ fun LoginScreen(
     ){
         Text(text = "Nombre de usuario")
         VerticalMidSpacer()
-        TextField(value = uiStateUsuario.username, onValueChange = { uiStateUsuario.username } )
+        TextField(value = uiStateUsuario.username, onValueChange = { viewModelUsuario.setUsername(it) } )
         VerticalBigSpacer()
         Text(text = "Contraseña")
         VerticalMidSpacer()
-        TextField(value = uiStateUsuario.username, onValueChange = { uiStateUsuario.password } )
+        TextField(value = uiStateUsuario.password, onValueChange = { viewModelUsuario.setPassword(it) } )
         VerticalMidSpacer()
         Button(
             onClick = { clickContinue.invoke()
