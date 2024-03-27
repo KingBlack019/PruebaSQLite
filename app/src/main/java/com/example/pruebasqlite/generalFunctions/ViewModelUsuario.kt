@@ -1,7 +1,11 @@
 package com.example.pruebasqlite.generalFunctions
 
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import com.example.pruebasqlite.Data.Producto
+import com.example.pruebasqlite.Data.Tienda
 import com.example.pruebasqlite.Data.uiStateUser
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -12,7 +16,6 @@ class ViewModelUsuario : ViewModel() {
 
     private val _uiState = MutableStateFlow(uiStateUser())
     val uiState: StateFlow<uiStateUser> = _uiState.asStateFlow()
-
     fun setUsername(username: String) {
         _uiState.update { currentState ->
             currentState.copy( username = username)
