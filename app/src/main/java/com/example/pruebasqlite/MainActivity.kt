@@ -16,11 +16,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.pruebasqlite.Data.LogoApiService
+import com.example.pruebasqlite.Data.Tienda
+import com.example.pruebasqlite.Screens.*
 import com.example.pruebasqlite.generalFunctions.ViewModelUsuario
-import com.example.pruebasqlite.Screens.LoginScreen
-import com.example.pruebasqlite.Screens.MainScreen
-import com.example.pruebasqlite.Screens.NavRoute
-import com.example.pruebasqlite.Screens.RegisterScreen
 import com.example.pruebasqlite.generalFunctions.ViewModelTienda
 import com.example.pruebasqlite.ui.theme.PruebaSQLiteTheme
 
@@ -46,6 +44,7 @@ class MainActivity : ComponentActivity() {
         val uiStateVshop by viewModelTienda.uiState.collectAsState()
 
         val logoApiService: LogoApiService = LogoApiService()
+        val tiendaFake: ArrayList<Tienda> = viewModelTienda.getFakeListaTienda() // TODO RECORDAR QUE ESTO ES FAKE
 
         NavHost(navController = navController, startDestination = NavRoute.LOGIN.name){
             composable(NavRoute.LOGIN.name){
@@ -55,7 +54,10 @@ class MainActivity : ComponentActivity() {
                 RegisterScreen(viewModelUsuario = viewModelUsuario, uiStateUsuario = uiStateUsuario, clickContinue = { navController.navigate(NavRoute.MAIN.name) })
             }
             composable(NavRoute.MAIN.name){
-                MainScreen(viewModelUsuario = viewModelUsuario, uiStateUsuario = uiStateUsuario, viewModelTienda = viewModelTienda, uiStateVshop = uiStateVshop, logoApiService = logoApiService)
+                MainScreen(viewModelUsuario = viewModelUsuario, uiStateUsuario = uiStateUsuario, viewModelTienda = viewModelTienda, uiStateVshop = uiStateVshop, logoApiService = logoApiService, tienda = tiendaFake, clickContinue = { navController.navigate(NavRoute.SHOP.name) })
+            }
+            composable(NavRoute.SHOP.name){
+                ShopScreen(viewModelTienda = viewModelTienda)
             }
         }
     }

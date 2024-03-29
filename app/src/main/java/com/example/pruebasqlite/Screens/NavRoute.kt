@@ -6,5 +6,6 @@ enum class NavRoute {
     MAIN,
     ACTIVITIES,
     CONFIGURATION,
+    SHOP
 
 }

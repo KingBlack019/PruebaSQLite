@@ -22,7 +22,7 @@ import java.net.URL
 
 class LogoApiService {
 
-    val BASE_URL = "https://logo.clearbit.com/nike"// domain es donde tenemos que añadir la ruta
+    val BASE_URL = "https://logo.clearbit.com/"// domain es donde tenemos que añadir la ruta
     private val retrofit = Retrofit.Builder()
         .addConverterFactory(ScalarsConverterFactory.create())
         .baseUrl(BASE_URL)
